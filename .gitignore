@@ -1,0 +1,2 @@
+*.txt
+#This line tells Git to ignore all files with a .txt extension.

@@ -3,3 +3,4 @@
 
 # Except for requirements.txt
 !requirements.txt
+!the_raven.txt

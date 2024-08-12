@@ -36,3 +36,12 @@ test:
 
 integration:
 	. env/bin/activate; pytest -m integration
+
+#updated makefile
+.PHONY: test
+test:
+    pytest --ignore=tests/test_integration.py
+
+.PHONY: test-integration
+test-integration:
+    pytest -m integration

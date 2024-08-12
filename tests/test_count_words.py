@@ -1,5 +1,5 @@
 import pytest
-from ..text_processing import count_words
+from text_processing import count_words
 import sys
 import os
 

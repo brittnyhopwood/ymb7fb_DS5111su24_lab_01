@@ -1,5 +1,5 @@
 import pytest
-from ..text_processing import tokenize
+from text_processing import tokenize
 import sys
 import os
 

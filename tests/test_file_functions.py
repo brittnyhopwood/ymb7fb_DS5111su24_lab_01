@@ -4,7 +4,7 @@ import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from ..text_processing import clean_text, tokenize, count_words
+from text_processing import clean_text, tokenize, count_words
 
 # Define the paths to the text files
 ENGLISH_TEXT_FILES = ["the_raven.txt"]  # Update this list with files that are present in the 'tests' directory

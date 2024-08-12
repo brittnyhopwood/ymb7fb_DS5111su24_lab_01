@@ -1,5 +1,5 @@
 import pytest
-from ..text_processing import clean_text  # Import from text_processing.py
+from text_processing import clean_text  # Import from text_processing.py
 import sys
 import os
 

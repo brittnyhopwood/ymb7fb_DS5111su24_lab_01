@@ -6,14 +6,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']  # Optional, if you want to test across multiple versions
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Cache Python packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.12'
+        python-version: ${{ matrix.python-version }}  # Use this line for matrix testing
 
     - name: Install dependencies
       run: |
@@ -22,4 +34,5 @@ jobs:
 
     - name: Run tests
       run: |
+        export PYTHONPATH=$(pwd)  # Ensure the PYTHONPATH is set
         pytest

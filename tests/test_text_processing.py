@@ -1,5 +1,5 @@
 import pytest
-from text_processing import clean_text, tokenize, count_words
+from ..text_processing import clean_text, tokenize, count_words
 
 def test_clean_text():
     assert clean_text("Hello, World!") == "hello world"

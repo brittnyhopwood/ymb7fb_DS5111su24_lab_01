@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,8 +19,11 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          make env
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Test with pytest
-        run: |
-          pytest -vvx tests/
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Set up environment
+        run: make setup
+      - name: Run non-integration tests
+        run: make test
+      - name: Run integration tests
+        run: make integration

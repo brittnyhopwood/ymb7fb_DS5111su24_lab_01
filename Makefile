@@ -23,3 +23,12 @@ total_lines:
 
 total_words:
 	powershell -Command "(Get-Content book*.txt | Measure-Object -Word).Words"
+
+# New targets
+setup:
+	python3 -m venv env
+	. env/bin/activate; pip install --upgrade pip
+	. env/bin/activate; pip install -r requirements.txt
+
+test:
+	. env/bin/activate; pytest

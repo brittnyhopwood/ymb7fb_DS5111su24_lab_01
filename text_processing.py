@@ -13,8 +13,10 @@ def clean_text(text):
 
 def tokenize(text):
     logging.debug('Tokenizing text...')
+    text = clean_text(text)  # Ensure text is cleaned before tokenizing
     words = text.split()
     return words
+
 
 def count_words(text):
     logging.debug('Counting words...')

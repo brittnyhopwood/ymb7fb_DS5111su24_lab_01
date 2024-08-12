@@ -1,34 +1,38 @@
 default:
-	@type Makefile
+	@echo "Available targets: setup, test, integration"
 
 get_texts:
-	@for %%i in (2147 2148 2149	45484 1064 10031 32037 1063 932 50852) do ( \
-		wget -O book%%i.txt https://www.gutenberg.org/cache/epub/%%i/pg%%i.txt \
-	)
+	@for i in 2147 2148 2149 45484 1064 10031 32037 1063 932 50852; do \
+		wget -O book$$i.txt https://www.gutenberg.org/cache/epub/$$i/pg$$i.txt; \
+	done
 
 get_raven:
 	wget -O raven.txt https://www.gutenberg.org/cache/epub/17192/pg17192.txt
 
 raven_line_count:
-	powershell -Command "(Get-Content raven.txt | Measure-Object -Line).Lines"
+	wc -l raven.txt
 
 raven_word_count:
-	powershell -Command "(Get-Content raven.txt | Measure-Object -Word).Words"
+	wc -w raven.txt
 
 raven_counts:
-	powershell -Command "$$content = Get-Content raven.txt; $$countLower = ($$content | Select-String -Pattern '\braven\b').Count; $$countTitle = ($$content | Select-String -Pattern '\bRaven\b').Count; $$countIgnore = ($$content | Select-String -Pattern 'raven' -AllMatches).Matches.Count; Write-Output 'Lowercase ''raven'': ' + $$countLower; Write-Output 'Title case ''Raven'': ' + $$countTitle; Write-Output 'Case-insensitive ''raven'': ' + $$countIgnore"
+	grep -o '\braven\b' raven.txt | wc -l
+	grep -o '\bRaven\b' raven.txt | wc -l
+	grep -o 'raven' raven.txt | wc -l
 
 total_lines:
-	powershell -Command "(Get-Content raven.txt | Measure-Object -Line).Lines"
+	wc -l book*.txt
 
 total_words:
-	powershell -Command "(Get-Content book*.txt | Measure-Object -Word).Words"
+	wc -w book*.txt
 
-# New targets
 setup:
 	python3 -m venv env
 	. env/bin/activate; pip install --upgrade pip
 	. env/bin/activate; pip install -r requirements.txt
 
 test:
-	. env/bin/activate; pytest
+	. env/bin/activate; pytest -m "not integration"
+
+integration:
+	. env/bin/activate; pytest -m integration

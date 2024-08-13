@@ -1,22 +1,20 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dpy8wq"
-version = "0.0.2"
+name = "ymb7fb_DS5111su24_lab_01"
+version = "0.1.0"
+description = "A Python package for my DS5111 assignment"
 authors = [
-  { name="Example Author", email="efrain.olivares@gmail.com" },
+    { name = "Your Name", email = "your.email@example.com" }
 ]
-description = "A small example package"
-readme = "README.md"
-requires-python = ">=3.7"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
+dependencies = [
+    # List any package dependencies here
 ]
 
-[project.urls]
-Homepage = "https://github.com/"
-Issues = "https://github.com/"
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"

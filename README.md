@@ -1,7 +1,6 @@
 <<<<<<< HEAD
 =======
-[![Python CI](https://github.com/brittnyhopwood/ymb7fb_DS5111su24_lab_01/actions/workflows/validations.yml/badge.svg?branch=WEEK-05%2Fgithub_automation)](https://github.com/brittnyhopwood/ymb7fb_DS5111su24_lab_01/actions/workflows/validations.yml)
->>>>>>> 8669f754a3bc7925e9750f816587a1f3711ff7f2
+[![Python CI](https://github.com/brittnyhopwood/ymb7fb_DS5111su24_lab_01/actions/workflows/validations.yml/badge.svg?event=workflow_dispatch)](https://github.com/brittnyhopwood/ymb7fb_DS5111su24_lab_01/actions/workflows/validations.yml)
 # ymb7fb_DS5111su24_lab_01
 Module 1 - Lab 4
 

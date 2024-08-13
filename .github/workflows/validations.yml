@@ -1,25 +1,59 @@
 name: Python CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      run-integration-tests:
+        description: 'Run integration tests'
+        required: true
+        default: 'false'
+        type: boolean
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Cache Python packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.12'
+        python-version: ${{ matrix.python-version }}
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run tests
+    - name: Run non-integration tests
       run: |
-        pytest
+        pytest -m "not integration"
+      env:
+        PYTHONPATH: ${{ github.workspace }}
+
+    - name: Run integration tests
+      if: ${{ github.event.inputs.run-integration-tests == 'true' }}
+      run: |
+        pytest -m "integration"
+      env:
+        PYTHONPATH: ${{ github.workspace }}

@@ -1,7 +1,6 @@
-LICENSE
 README.md
 pyproject.toml
-src/setup.py
+setup.py
 src/ymb7fb/__init__.py
 src/ymb7fb/text_processing.py
 src/ymb7fb_DS5111su24_lab_01.egg-info/PKG-INFO
@@ -10,6 +9,9 @@ src/ymb7fb_DS5111su24_lab_01.egg-info/dependency_links.txt
 src/ymb7fb_DS5111su24_lab_01.egg-info/top_level.txt
 tests/test_clean_text.py
 tests/test_count_words.py
+tests/test_environment.py
+tests/test_failing_with_feedback.py
 tests/test_file_functions.py
+tests/test_integration.py
 tests/test_text_processing.py
 tests/test_tokenize.py

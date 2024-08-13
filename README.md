@@ -25,4 +25,3 @@ word_counts = count_words(cleaned)
 print("Cleaned:", cleaned)
 print("Tokens:", tokens)
 print("Word Counts:", word_counts)
-

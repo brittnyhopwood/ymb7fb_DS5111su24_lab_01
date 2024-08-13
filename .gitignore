@@ -1,0 +1,6 @@
+**/*__pycache__
+*.txt
+#This line tells Git to ignore all files with a .txt extension.
+!requirements.txt
+!the_raven.txt
+

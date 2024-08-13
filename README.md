@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 [![Python CI](https://github.com/brittnyhopwood/ymb7fb_DS5111su24_lab_01/actions/workflows/validations.yml/badge.svg?event=workflow_dispatch)](https://github.com/brittnyhopwood/ymb7fb_DS5111su24_lab_01/actions/workflows/validations.yml)
 # ymb7fb_DS5111su24_lab_01
 Module 1 - Lab 4
